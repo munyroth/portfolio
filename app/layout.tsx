@@ -1,35 +1,59 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Noto_Sans_Khmer } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/components/theme-provider";
 
-const inter = Inter({
-	subsets: ["latin"],
+const notoSansKhmer = Noto_Sans_Khmer({
+	subsets: ["khmer", "latin"],
 	variable: "--font-sans",
 });
 
 export const metadata: Metadata = {
-	title: "Muny Roth | Full Stack Developer from Cambodia",
-	description:
-		"Full Stack Developer crafting scalable systems with NestJS, Laravel, Spring Boot, Next.js, and Flutter. Building production-ready applications from Phnom Penh, Cambodia.",
+	title: "Muny Roth | Full Stack Developer",
+	description: "Crafting scalable systems & elegant solutions from Cambodia 🇰🇭",
 	keywords: [
 		"Full Stack Developer",
-		"Backend Developer",
+		"Software Engineer",
+		"System Architect",
 		"NestJS",
 		"Laravel",
 		"Spring Boot",
 		"Next.js",
 		"Flutter",
-		"Cambodia Developer",
+		"Microservices",
+		"Event-Driven Architecture",
+		"Docker",
+		"GCP",
+		"PostgreSQL",
+		"Redis",
+		"Khmer",
+		"Cambodia",
 		"Phnom Penh",
-		"Software Engineer",
 	],
-	authors: [{ name: "Muny Roth" }],
+	authors: [{ name: "Muny Roth", url: "https://munyroth.me" }],
+	creator: "Muny Roth",
+	publisher: "Muny Roth",
+	metadataBase: new URL("https://munyroth.me"),
+	alternates: {
+		canonical: "/",
+	},
 	openGraph: {
 		title: "Muny Roth | Full Stack Developer",
 		description:
-			"Crafting scalable systems and elegant solutions. Full Stack Developer specializing in NestJS, Laravel, and modern web technologies.",
+			"Crafting scalable systems & elegant solutions from Cambodia 🇰🇭",
+		url: "https://munyroth.me",
+		siteName: "Muny Roth",
+		locale: "en_US",
 		type: "website",
+	},
+	twitter: {
+		card: "summary_large_image",
+		title: "Muny Roth | Full Stack Developer",
+		description:
+			"Crafting scalable systems & elegant solutions from Cambodia 🇰🇭",
+		creator: "@dr_munyroth",
 	},
 };
 
@@ -40,8 +64,12 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<body className={`${inter.variable} font-sans antialiased`}>
-				<ThemeProvider>{children}</ThemeProvider>
+			<body className={`${notoSansKhmer.variable} font-sans antialiased`}>
+				<ThemeProvider>
+					{children}
+					<Analytics />
+					<SpeedInsights />
+				</ThemeProvider>
 			</body>
 		</html>
 	);
